@@ -1,0 +1,24 @@
+Import('env')
+
+fmodapifolder = "#modules/fmod/api"
+
+module_env = env.Clone()
+module_env.add_source_files(env.modules_sources, "*.cpp")
+
+module_env.Append(CPPPATH=fmodapifolder + "/studio/inc")
+module_env.Append(CPPPATH=fmodapifolder + "/lowlevel/inc")
+
+env.Append(LIBPATH=fmodapifolder + "/studio/lib")
+env.Append(LIBPATH=fmodapifolder + "/lowlevel/lib")
+
+# API lowlevel 32 bit
+# env.Append(LIBS=["fmod_vc", "fmodL_vc"])
+
+# API lowlevel 64 bit
+env.Append(LIBS=["fmod64_vc", "fmodL64_vc"])
+
+# API studio 32 bit
+# env.Append(LIBS=["fmodstudio_vc", "fmodstudioL_vc"])
+
+# API studio 64 bit
+env.Append(LIBS=["fmodstudio64_vc", "fmodstudioL64_vc"])
